@@ -8,6 +8,7 @@
       font-family: sans-serif;
       text-align: center;
       padding: 50px;
+      cursor: pointer; /* 鼠标变成点击手势，提示用户可以点击 */
     }
     img {
       max-width: 80%;
@@ -19,5 +20,24 @@
   <h1>欢迎来到 AnnoTokyo</h1>
   <p>虽然还没想好放什么。</p>
   <img src="image/ha.png" alt="示例图片">
+
+  <!-- 音频元素（替换 audio.mp3 为你的音频文件路径）-->
+  <audio id="myAudio" src="audio.mp3"></audio>
+
+  <script>
+    const audio = document.getElementById("myAudio");
+    let played = false;
+
+    document.body.addEventListener("click", () => {
+      if (!played) {
+        audio.play().then(() => {
+          console.log("音频播放成功");
+        }).catch(err => {
+          console.error("播放失败：", err);
+        });
+        played = true;
+      }
+    });
+  </script>
 </body>
 </html>
